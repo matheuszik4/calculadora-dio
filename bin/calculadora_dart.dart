@@ -36,6 +36,6 @@ class Pessoa {
 }
 
 void main(List<String> arguments) {
-  Pessoa matheus = new Pessoa(idade: 25, altura: 1.80, peso: 100);
+  Pessoa matheus = new Pessoa(idade: 25, altura: 1.80, peso: 80);
   matheus.imprimirIMC();
 }
