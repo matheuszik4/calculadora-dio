@@ -1,13 +1,15 @@
 import 'package:calculadora_dart/calculadora_dart.dart' as calculadora_dart;
+import 'dart:io';
 
 // DIO Challenge
 
 class Pessoa {
+  String nome;
   int idade;
   double peso;
   double altura;
 
-  Pessoa({required this.idade, required this.peso, required this.altura});
+  Pessoa({required this.nome, required this.idade, required this.peso, required this.altura});
 
   double calcularIMC() {
     return this.peso / (this.altura*2); 
@@ -16,6 +18,8 @@ class Pessoa {
 
   void imprimirIMC() {
     double imc = calcularIMC();
+
+    print("Olá, " + this.nome);
 
     if (imc <= 16) {
       print('Magreza Grave');
@@ -38,6 +42,29 @@ class Pessoa {
 }
 
 void main(List<String> arguments) {
-  Pessoa matheus = new Pessoa(idade: 25, altura: 1.80, peso: 80);
-  matheus.imprimirIMC();
+
+  print("Qual seria seu nome?");
+  String nome = stdin.readLineSync() ?? 'Não informado';
+
+  print("Qual seria sua idade?");
+  String? idadeInput = stdin.readLineSync();
+  int idade = int.tryParse(idadeInput ?? '') ?? 0;
+
+  print("Qual seria seu peso?");
+  String? pesoInput = stdin.readLineSync();
+  double peso = double.tryParse(pesoInput ?? '') ?? 0.0;
+
+  print("Qual seria sua altura?");
+  String? alturaInput = stdin.readLineSync();
+  double altura = double.tryParse(alturaInput ?? '') ?? 0.0;
+
+  Pessoa pessoa = new Pessoa(
+    nome: nome, 
+    idade: idade, 
+    peso: peso, 
+    altura: altura
+  );
+
+  pessoa.imprimirIMC();
+
 }
